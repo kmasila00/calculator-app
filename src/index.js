@@ -1,8 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import appStore from './AppStore';
+import Calculator from './Calculator';
 import * as serviceWorker from './serviceWorker';
+
+const App = () => (
+  <Provider store={appStore}>
+    <Calculator />
+  </Provider>
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
