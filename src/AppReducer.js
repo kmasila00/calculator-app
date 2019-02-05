@@ -32,7 +32,6 @@ const calcReducer = (state = initialState, action) => {
     case ("CALCULATION") :
       return Object.assign({}, state, {
         total: Number(state.screen),
-        screen: '0',
         calc: action.data
       });
       break;
@@ -55,7 +54,7 @@ const calcReducer = (state = initialState, action) => {
       break;
     case ("ENTER_DIGIT") :
       return Object.assign({}, state, {
-        screen: state.screen === '0' ? `${action.data}` : `${state.screen}${action.data}`
+        screen: ((state.calc !== '' && state.total == state.screen) || state.screen === '0') ? `${action.data}` : `${state.screen}${action.data}`
       });
       break;
     default :
